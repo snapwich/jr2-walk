@@ -15,6 +15,10 @@ test("shouts", () => {
   assert.deepEqual(greet(["ada", "--shout"]), { code: 0, stdout: "HELLO, ADA!" });
 });
 
+test("trims the name with --shout", () => {
+  assert.deepEqual(greet([" ada ", "--shout"]), { code: 0, stdout: "HELLO, ADA!" });
+});
+
 test("trims the name", () => {
   assert.deepEqual(greet([" ada "]), { code: 0, stdout: "hello, ada" });
 });
