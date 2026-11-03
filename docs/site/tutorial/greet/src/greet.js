@@ -16,7 +16,7 @@ export function greet(args) {
   const unknown = args.find((a) => a.startsWith("-") && a !== "--shout");
   if (unknown) return { code: 2, stderr: `greet: unknown flag ${unknown}\n\n${HELP}` };
 
-  const name = args.find((a) => !a.startsWith("-")) ?? "world";
+  const name = (args.find((a) => !a.startsWith("-")) ?? "world").trim();
   const line = `hello, ${name}`;
   return { code: 0, stdout: args.includes("--shout") ? `${line.toUpperCase()}!` : line };
 }
